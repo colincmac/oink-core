@@ -1,0 +1,59 @@
+name: Push Nuget Package to Azure Artifacts or GitHub Package Registry
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '*'
+env:
+  BUILD_CONFIGURATION: 'Release'                                                          # set this to the appropriate build configuration
+  DOTNET_VERSION: '6.x'                                                                   # set this to the dot net version to use
+  GITHUB_PACKAGE_REGISTRY_URL: https://nuget.pkg.github.com/colincmac/index.json   # set this to the registry url for your GitHub package registry
+ 
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: dotnet build and test
+      run: |
+        dotnet restore
+        dotnet build --configuration '${{ env.BUILD_CONFIGURATION }}'
+        dotnet test --configuration '${{ env.BUILD_CONFIGURATION }}'
+        
+  gpr-build-and-deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    steps:
+    # Checkout the repo
+    - uses: actions/checkout@3
+
+    # Setup .NET Core SDK
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
+        source-url: ${{ env.GITHUB_PACKAGE_REGISTRY_URL }}
+      env:
+        NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Setup the .NET Core SDK with the appropriate auth token to access the GitHub Package Registry
+
+    # Run dotnet build and package
+    - name: dotnet build and publish
+      run: |
+        dotnet restore
+        dotnet build --configuration '${{ env.BUILD_CONFIGURATION }}'
+        dotnet pack -c '${{ env.BUILD_CONFIGURATION }}'
+
+    # Publish the package to GitHub Package Registry
+    - name: 'dotnet publish'
+      run: dotnet nuget push bin/Release/*.nupkg
