@@ -52,4 +52,4 @@ jobs:
         dotnet pack -c '${{ env.BUILD_CONFIGURATION }}'
 
     - name: 'dotnet publish'
-      run: dotnet nuget push bin/Release/*.nupkg
+      run: dotnet nuget push **/bin/Release/*.nupkg
