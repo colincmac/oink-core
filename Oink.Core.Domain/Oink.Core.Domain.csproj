@@ -4,10 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>Oink.Core.Domain</PackageId>
+    <PackageId>OinkCoreDomain</PackageId>
     <Version>1.0.0</Version>
     <Authors>Colin McCullough</Authors>
     <Company>Oink</Company>
+	<RepositoryUrl>https://github.com/colincmac/oink-core-dotnet</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
