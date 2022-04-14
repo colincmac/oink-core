@@ -1,5 +1,4 @@
 ﻿using System.Text.Json.Serialization;
-
 namespace Oink.Core.Domain;
 
 // Reference: https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/Azure.Core/src/Messaging/CloudEvent.cs
@@ -47,5 +46,4 @@ public class StoredDomainEvent
     public DateTimeOffset Time { get; set; } = DateTimeOffset.UtcNow;
 
     public BinaryData Data { get; set; }
-
 }
