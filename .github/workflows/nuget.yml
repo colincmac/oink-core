@@ -32,4 +32,4 @@ jobs:
       run: dotnet pack --configuration '${{ env.BUILD_CONFIGURATION }}'
 
     - name: Publish the package to GPR
-      run: dotnet nuget push **/*.nupkg
+      run: dotnet nuget push **/*.nupkg --skip-duplicate
