@@ -4,15 +4,16 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <PackageId>Oink.Core.Domain</PackageId>
-    <Version>1.1.0</Version>
-    <Authors>Colin McCullough</Authors>
-    <Company>Oink</Company>
+	<PackageId>Oink.Core.Azure.Cosmos</PackageId>
+	<Version>1.1.0</Version>
+	<Authors>Colin McCullough</Authors>
+	<Company>Oink</Company>
 	<RepositoryUrl>https://github.com/colincmac/oink-core-dotnet</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.24.0" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.26.1" />
+    <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.CosmosDB" Version="4.0.0-preview3" />
   </ItemGroup>
 
 </Project>
