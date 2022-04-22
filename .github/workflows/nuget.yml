@@ -1,12 +1,9 @@
-name: Push Nuget Package to Azure Artifacts or GitHub Package Registry
+name: Push Nuget Package to GitHub Package Registry
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - '*'
 env:
   BUILD_CONFIGURATION: 'Release'                                                          # set this to the appropriate build configuration
   DOTNET_VERSION: '6.0.x'                                                                   # set this to the dot net version to use
