@@ -1,6 +1,20 @@
 # Sample - Shared libraries
-**This is a work in progress. This repo is a part of a larger effort to demonstrate secure workloads on Azure.**
-This is a supporting li
+**This is a work in progress. This repo is a part of a larger effort to demonstrate secure workloads on Azure. This is for reference only and not meant for production workloads**
+This is a supporting set of libraries. Reference the related repositories below to see them in action.
+
+## Related GitHub repositories
+
+### Supporting
+|Item|Description|
+|----|-----|
+|[Utility Docker Images](https://github.com/colincmac/oink-docker-images)|Images used to support Ops scenarios. Built using [ACR Tasks](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-tasks-overview)|
+|[Shared .NET Libraries](https://github.com/colincmac/oink-core-dotnet)|Base .NET seedwork for implementing CQRS, EventSourcing, and DDD|
+
+### Application Workloads
+|Item|Description|
+|----|-----|
+|[Financial Account Management](https://github.com/colincmac/oink-financial-account-mgmt)|TODO|
+
 ## Features
 
 This project framework provides the following features:
